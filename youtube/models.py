@@ -1,6 +1,6 @@
 from django.db import models
+from youtube import constants
 
-# Create your models here.
 class BaseModel(models.Model):
     created_at = models.DateTimeField(auto_now_add=True)
     updated_at = models.DateTimeField(auto_now=True)
@@ -15,3 +15,4 @@ class YoutubeVideos(BaseModel):
     published_at = models.DateTimeField(null=False)
     thumbnail_data = models.JSONField(default={})
     video_id = models.CharField(max_length=200, null=False)
+    search_tag = models.CharField(max_length=200, choices=constants.SearchTag.choices())
