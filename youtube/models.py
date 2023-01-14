@@ -16,3 +16,9 @@ class YoutubeVideos(BaseModel):
     thumbnail_data = models.JSONField(default={})
     video_id = models.CharField(max_length=200, null=False)
     search_tag = models.CharField(max_length=200, choices=constants.SearchTag.choices())
+
+
+class ApiKeyInfo(BaseModel):
+    platform = models.IntegerField(choices=constants.Platform.choices())
+    api_key = models.CharField(max_length=200, null=False)
+    is_active = models.BooleanField(default=True)

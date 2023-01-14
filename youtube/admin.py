@@ -12,3 +12,12 @@ class YoutubeVideosAdmin(admin.ModelAdmin):
         'video_id'
     ]
     list_filter = ['title', 'search_tag']
+
+@admin.register(models.ApiKeyInfo)
+class ApiKeyInfoAdmin(admin.ModelAdmin):
+    list_display = [
+        'platform',
+        'api_key',
+        'is_active'
+    ]
+    list_filter = ['platform', 'is_active']
