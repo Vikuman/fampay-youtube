@@ -12,9 +12,9 @@ app.config_from_object(settings, namespace='CELERY')
 
 # Celery beat settings
 app.conf.beat_schedule = {
-    'run-every-10-second': {
+    'run-every-n-seconds': {
         'task': 'youtube.tasks.fetch_youtube_videos',
-        'schedule': 10
+        'schedule': 30
     }
 }
 
