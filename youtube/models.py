@@ -17,6 +17,11 @@ class YoutubeVideos(BaseModel):
     video_id = models.CharField(max_length=200, null=False)
     search_tag = models.CharField(max_length=200, choices=constants.SearchTag.choices())
 
+    class Meta:
+        indexes = [
+            models.Index(fields=['published_at']),
+        ]
+
 
 class ApiKeyInfo(BaseModel):
     platform = models.IntegerField(choices=constants.Platform.choices())

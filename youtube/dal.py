@@ -19,7 +19,11 @@ def get_searched_youtube_videos(title: str, description: str) -> typing.List[typ
     return list(data)
 
 def get_active_api_keys(platform: int) -> typing.List[typing.Dict]:
-    return list(models.ApiKeyInfo.objects.filter(platform=platform, is_active=True).values_list('api_key', flat=True))
+    return list(
+        models.ApiKeyInfo.objects.filter(
+            platform=platform, is_active=True
+        ).values_list('api_key', flat=True)
+    )
 
 def get_last_published_date(search_tag):
     youtube_video = models.YoutubeVideos.objects.filter(
