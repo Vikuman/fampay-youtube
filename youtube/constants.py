@@ -1,4 +1,5 @@
 import enum
+from django.utils import timezone
 
 MAX_VIDEOS_PER_PAGE = 20
 YOUTUBE_SEARCH_API_V3 = 'https://www.googleapis.com/youtube/v3/search?key={api_key}'
@@ -20,4 +21,5 @@ class Platform(enum.Enum):
     def choices(cls):
         return tuple((i.value, i.name) for i in cls)
 
-YOUTUBE_REDIS_API_KEY_NAME = 'youtube_redis_api_key_name'
+KEY_NAME_REDIS_YOUTUBE_LAST_PUBLISHED_TIME = 'redis_youtube_last_published_time'
+DEFAULT_LAST_PUBLISHED_DATETIME = timezone.now() - timezone.timedelta(days=1)
