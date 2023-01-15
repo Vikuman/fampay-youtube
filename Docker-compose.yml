@@ -1,0 +1,19 @@
+version : '3.8'
+
+services:
+    django:
+      build: .
+      command: python manage.py runserver 0.0.0.0:8000
+      ports:
+        - 8000:8000
+    
+    redis:
+      image: "redis:alpine"
+    
+    celery:
+      restart: always
+      build:
+        context: .
+      command: celery -A fampay.config.celery worker --beat -l info
+      depends_on:
+        - redis
