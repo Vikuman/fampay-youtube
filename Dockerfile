@@ -11,6 +11,6 @@ ADD . /app
 COPY ./requirements.txt /app/requirements.txt
 
 RUN pip install -r requirements.txt
-RUN python manage.py migrate youtube
+RUN python manage.py migrate
 
 COPY . /app
